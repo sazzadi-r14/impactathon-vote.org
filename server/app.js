@@ -61,6 +61,8 @@ app.post('/send-email', async (req, res, next) => {
 // Error handling middleware
 app.use(ApiErrorHandler);
 
+app.use('/webhooks', smsRoutes); // Moved to the correct place after initializing 'app'
+
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

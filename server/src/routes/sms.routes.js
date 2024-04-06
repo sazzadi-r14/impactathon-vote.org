@@ -1,0 +1,49 @@
+// src/routes/sms.routes.js
+import express from 'express';
+import { sendSMS } from '../services/vonageService.js'; // Ensure the path is correct
+import { envs } from "../utils/config.js";
+
+const VONAGENUMBER = envs.VONAGE_NUMBER;
+
+const router = express.Router();
+
+
+
+// router.get('/incoming-sms', async (req, res) => {
+//   // Extract message and sender from the query parameters
+//   const { msisdn, to, text } = req.query;
+
+//   // Process the incoming message
+//   // For demonstration, let's just log the extracted parameters
+//   console.log(`Sender: ${msisdn}, To: ${to}, Text: ${text}`);
+
+//   // ...the rest of your logic to send a response or process the message
+
+//   // Send a 200 OK response to acknowledge receipt
+//   res.status(200).send('Message received');
+// });
+
+
+
+// Updated to handle GET requests and query parameters
+router.get('/incoming-sms', async (req, res) => {
+  // Extract message and sender from the query parameters
+  const { msisdn, to, text } = req.query;
+  const sender = '+' + msisdn;
+
+  // Process the incoming message
+  console.log(`Sender: ${sender}, To: ${VONAGENUMBER}, Text: ${text}`);
+  const responseMessage = `You sent: ${text}`;
+
+  try {
+      // Send the response back to the sender
+      await sendSMS(sender, VONAGENUMBER, responseMessage);
+      console.log(`Response sent to ${sender}: ${responseMessage}`);
+      res.status(200).json({ message: 'Response sent' });
+  } catch (error) {
+      console.error(`Failed to send response to ${sender}: ${error}`);
+      res.status(500).json({ error: 'Failed to send SMS response' });
+  }
+});
+
+export default router;
