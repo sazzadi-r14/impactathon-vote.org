@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { sendSigninLink, signinFromGoogle } from "../../services/authentication.ts";
-import { AuthPopup } from "../../stores/user.store.ts";
+import { sendSigninLink } from "../../services/authentication.ts";
 import { Input } from "../ui/input.jsx";
 import { Button } from "../ui/button.jsx";
+import { UserInfo } from "@/stores/user.store.ts";
 
 /**
  * @param {Object} param0 - The object containing user registration details.
@@ -34,16 +34,10 @@ export default function AuthModal({
 
   const emailLinkSignin = async () => {
     setButtonDisabled(true);
+    UserInfo.setKey("email", email)
     await sendSigninLink(email, redirectPath);
     setSubmitted(true);
     setButtonDisabled(false);
-  };
-
-  const googleSignin = async () => {
-    setButtonDisabled(true);
-    await signinFromGoogle();
-    AuthPopup.set("false");
-    window.location.assign(redirectPath);
   };
 
   return (

@@ -8,17 +8,10 @@ interface UserData extends Record<string, string | undefined> {
 }
 
 const AuthPopup = persistentAtom<string>("auth_popup", "false");
-const CurrentStream = persistentAtom<string>("current_stream", undefined);
-const NewVisit = persistentAtom<string>("new_visit", "true");
-
 const UserInfo = persistentMap<UserData>("user-data", {
   firstName: "",
   lastName: "",
   email: "",
 });
 
-function SetNewVisit(bool: boolean) {
-  NewVisit.set(bool.toString());
-}
-
-export { AuthPopup, CurrentStream, UserInfo, NewVisit, SetNewVisit };
+export { AuthPopup, UserInfo };

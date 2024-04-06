@@ -2,9 +2,7 @@ import {
 	getAuth,
 	isSignInWithEmailLink,
 	sendSignInLinkToEmail,
-	signInWithPopup,
 	indexedDBLocalPersistence,
-	GoogleAuthProvider,
 } from "firebase/auth";
 
 import env from "../lib/env.js";
@@ -13,7 +11,6 @@ import { app } from "./firebase.js";
 // Initialize Firebase Authentication.
 const auth = getAuth(app);
 auth.setPersistence(indexedDBLocalPersistence);
-const provider = new GoogleAuthProvider();
 
 /**
  * Sends signin link to user's email.
@@ -55,42 +52,6 @@ const signinFromLink = async (redirectPath: string) => {
 	}
 };
 
-/**
- * Signin user from Google process.
- * @param newUser Boolean whether user is new or not.
- * @param userType Type of user, either creator or backer.
- */
-const signinFromGoogle = async (newUser: boolean, userType: "Creator" | "Backer") => {
-	// Signin w/ Google.
-	const result = await signInWithPopup(auth, provider);
-
-	// Set idToken.
-	const idToken = (await result.user?.getIdToken(true)) || "";
-
-	// Request id
-	const requestId = document.cookie
-		.split("; ")
-		.find((cookie) => cookie.startsWith(`requestId`))
-		?.substring(10);
-
-	// Send request to signin user.
-	await fetch(`${env.BACKEND_URL}/auth/signin`, {
-		method: "POST",
-		credentials: "include",
-		headers: {
-			"Content-Type": "application/json",
-			Authorization: `Bearer ${idToken}`,
-		},
-		body: JSON.stringify({
-			email: result.user.email,
-			referral_code: localStorage.getItem("referral-code"),
-			requestId,
-		}),
-	});
-
-	// Clear referral codes.
-	localStorage.removeItem("referral-code");
-};
 
 /**
  * Total check for authentication.
@@ -100,4 +61,4 @@ const CheckAuth = async () => {
 	await signinFromLink(redirectPath);
 };
 
-export { auth, CheckAuth, sendSigninLink, signinFromGoogle };
+export { auth, CheckAuth, sendSigninLink };
