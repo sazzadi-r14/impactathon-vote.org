@@ -1,0 +1,29 @@
+{
+  "main": "./bin/www.js",
+  "type": "module",
+  "scripts": {
+    "start": "NODE_ENV=prod tsx ./bin/www",
+    "prod": "NODE_ENV=prod tsx ./bin/www",
+    "dev": "NODE_ENV=dev tsx watch ./bin/www",
+    "test": "NODE_ENV=test cross-env NODE_OPTIONS=--experimental-vm-modules jest --detectOpenHandles==false --forceExit"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.4",
+    "firebase": "^10.5.0",
+    "firebase-admin": "^11.11.0",
+    "form-data": "^4.0.0",
+    "googleapis": "^129.0.0",
+    "mongoose": "^7.6.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.7",
+    "request-ip": "^3.3.0",
+    "send_x_rest_api": "^1.0.0",
+    "tsx": "^4.7.1"
+  }
+}

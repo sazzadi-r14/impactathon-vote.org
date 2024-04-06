@@ -1,0 +1,24 @@
+.env
+keys/
+node_modules
+package-lock.json
+serviceAccountKey.json
+.DS_Store
+src/.DS_Store
+.cache
+node_modules
+.env
+
+# Hardhat files
+/cache
+/artifacts
+
+# TypeChain files
+/typechain
+/typechain-types
+
+# solidity-coverage files
+/coverage
+/coverage.json
+
+scripts

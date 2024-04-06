@@ -1,0 +1,58 @@
+name: Deployment
+
+# Controls when workflow will run
+on:
+  push:
+    branches: [main]
+
+  #Allows manual triggering of workflow
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  deploy:
+    name: Deploy to Google Cloud
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set Environment Variables
+        run: |
+          touch .env
+          echo MONGO_URI_PROD=${{ secrets.MONGO_URI_PROD }} >> .env
+          echo FIREBASE_PRIVATE_KEY_ID=${{ secrets.FIREBASE_PRIVATE_KEY_ID }} >> .env
+          echo FIREBASE_PRIVATE_KEY=${{ secrets.FIREBASE_PRIVATE_KEY }} >> .env
+          echo FIREBASE_PROJECT_ID=${{ secrets.FIREBASE_PROJECT_ID }} >> .env
+          echo FIREBASE_CLIENT_EMAIL=${{ secrets.FIREBASE_CLIENT_EMAIL }} >> .env
+          echo FIREBASE_CLIENT_ID=${{ secrets.FIREBASE_CLIENT_ID }} >> .env
+          echo FIREBASE_AUTH_URI=${{ secrets.FIREBASE_AUTH_URI }} >> .env
+          echo FIREBASE_TOKEN_URI=${{ secrets.FIREBASE_TOKEN_URI }} >> .env
+          echo FIREBASE_AUTH_CERT_URL=${{ secrets.FIREBASE_AUTH_CERT_URL }} >> .env
+          echo FIREBASE_CLIENT_CERT_URL=${{ secrets.FIREBASE_CLIENT_CERT_URL }} >> .env
+          echo CAMPAIGN_MONITOR_KEY=${{ secrets.CAMPAIGN_MONITOR_KEY }} >> .env
+          echo INFURA_ID=${{ secrets.INFURA_ID }} >> .env
+          echo MASTER_WALLET_ADDRESS=${{ secrets.MASTER_WALLET_ADDRESS }} >> .env
+          echo MOONPAY_SECRET_PROD=${{ secrets.MOONPAY_SECRET_PROD }} >> .env
+          echo TWITCH_ACCESS_TOKEN=${{ secrets.TWITCH_ACCESS_TOKEN }} >> .env
+          echo TWITCH_CLIENT_ID=${{ secrets.TWITCH_CLIENT_ID }} >> .env
+          echo AUTHNET_LOGIN_KEY=${{ secrets.AUTHNET_LOGIN_KEY }} >> .env
+          echo AUTHNET_TX_KEY=${{ secrets.AUTHNET_TX_KEY }} >> .env
+          echo AUTHNET_CLIENT_KEY=${{ secrets.AUTHNET_CLIENT_KEY }} >> .env
+          echo MOO_KEY=${{ secrets.MOO_KEY }} >> .env
+          echo SENDX_KEY=${{ secrets.SENDX_KEY }} >> .env
+          echo SENDX_ID=${{ secrets.SENDX_ID }} >> .env
+          echo FINGERPRINT_KEY=${{ secrets.FINGERPRINT_KEY }} >> .env
+          echo POSTHOG_KEY=${{ secrets.POSTHOG_KEY }} >> .env
+
+      - name: "Authenticate"
+        uses: "google-github-actions/auth@v1"
+        with:
+          credentials_json: ${{ secrets.GCS_GAE_CREDENTIALS }}
+
+      - name: Deploy to App Engine
+        uses: google-github-actions/deploy-appengine@v1
+        with:
+          deliverables: app.yaml
+          project_id: ${{ secrets.GCS_PROJECT_ID }}

@@ -1,0 +1,76 @@
+---
+import BaseHead from "../components/base/BaseHead.astro";
+import Footer from "../components/base/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import LoadCheckAuth from "../components/auth/LoadCheckAuth.astro";
+import { Toaster } from "@/components/ui/sonner";
+import "@/styles/globals.css";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+  image?: string;
+  header?: boolean;
+  footer?: boolean;
+  nav?: boolean;
+  authenticated?: boolean;
+  balance?: boolean;
+  vbucks?: boolean;
+}
+
+const {
+  title = SITE_TITLE,
+  description = SITE_DESCRIPTION,
+  noindex = false,
+  image = undefined,
+  header = true,
+  footer = true,
+  nav = true,
+  authenticated = false,
+  balance = false,
+  vbucks = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} image={image} />
+    <LoadCheckAuth />
+    <meta name="robots" content={noindex ? "noindex" : "index"} />
+    <meta
+      name="google-site-verification"
+      content="Mgh5itFp6S1IRx8fbGQr_4d3qj0Rh4bnJll7I9Crl7k"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
+    <link rel="preconnect" href="https://fpcdn.io" />
+    <link rel="preconnect" href="https://api.fpjs.io" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+        font-family: "Nunito Sans", sans-serif;
+      }
+    </style></head
+  >
+
+  <body class="dark">
+    <!-- {
+      header && (
+        <Header
+          authenticated={authenticated}
+          balance={balance}
+          vbucks={vbucks}
+        />
+      )
+    } -->
+    <main class="min-h-[50vh]">
+      <slot />
+    </main>
+    {footer && <Footer />}
+    <Toaster client:load />
+  </body>
+</html>
