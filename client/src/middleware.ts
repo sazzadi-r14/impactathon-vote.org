@@ -69,7 +69,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 					secure: true,
 					maxAge: 60 * 60 * 24 * 5, // 1 week
 					path: "/",
-					domain: env.PROD ? ".arctail.com" : "localhost",
+					domain: env.PROD ? "" : "localhost",
 				});
 			} catch (err) {
 				return context.redirect(signinPath);
@@ -121,7 +121,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 				secure: true,
 				maxAge: 60 * 60 * 24 * 5, // 1 week
 				path: "/",
-				domain: env.PROD ? ".arctail.com" : "localhost",
+				domain: env.PROD ? "" : "localhost",
 			});
 		} catch (err) {}
 
