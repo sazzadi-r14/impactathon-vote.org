@@ -4,11 +4,11 @@ import {
   Signout,
   Signin,
 } from "../controllers/auth.controllers.ts";
-import { createSessionCookie, authUserCookie } from "../utils/authentication.ts";
+import { createSessionCookie } from "../utils/authentication.ts";
 
 const AuthRoutes = Router();
 
-AuthRoutes.get("/verify", authUserCookie, Verify);
+AuthRoutes.get("/verify", Verify);
 AuthRoutes.post("/signin", Signin, createSessionCookie);
 AuthRoutes.post("/signout", Signout);
 

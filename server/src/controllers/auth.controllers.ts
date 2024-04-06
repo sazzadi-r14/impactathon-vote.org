@@ -4,6 +4,12 @@ import { envs } from "../utils/config.js";
 
 const Verify = async (req, res, next) => {
   try {
+    const sessionCookie = req.headers.sessioncookie;
+    if (!sessionCookie) return res.status(401).json({ message: "No cookie found" });
+
+    const { uid } = await fireAuth.verifySessionCookie(sessionCookie);
+    if (!uid) return res.status(401).json({ message: "Unauthorized" });
+
     res.status(200).json({
       message: "Authorized",
     });
