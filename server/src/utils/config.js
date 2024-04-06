@@ -23,10 +23,8 @@ var envs = {
 // Set them based on dev or prod.
 if (process.env.NODE_ENV === "dev") {
   envs.FRONT_END_URL = "http://localhost:4321";
-  envs.MONGODB_URI = process.env.MONGO_URI_DEV;
 } else {
   envs.FRONT_END_URL = "";
-  envs.MONGODB_URI = process.env.MONGO_URI_PROD;
 }
 
 export { envs };

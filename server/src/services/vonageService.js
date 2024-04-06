@@ -11,10 +11,10 @@ const vonageClient = new Vonage({
 export async function sendSMS(to, from, text) {
   try {
     const response = await vonageClient.sms.send({to, from, text});
-    console.log('Message sent successfully:', response);
+    // console.log('Message sent successfully:', response);
     return response;
   } catch (error) {
-    console.error('Error sending SMS:', error);
+    // console.error('Error sending SMS:', error);
     throw error;
   }
 }

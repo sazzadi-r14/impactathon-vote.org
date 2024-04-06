@@ -5,9 +5,9 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import nodemailer from 'nodemailer';
 
-import { envs } from "./utils/config.js";
-import { ApiErrorHandler } from "./errors/handler.error.js";
-import AuthRoutes from "./routes/auth.routes.js";
+import { envs } from "./src/utils/config.js";
+import { ApiErrorHandler } from "./src/errors/handler.error.js";
+import AuthRoutes from "./src/routes/auth.routes.js";
 import smsRoutes from './src/routes/sms.routes.js';
 
 
