@@ -1,0 +1,30 @@
+---
+import AppLayout from '../layouts/App.astro'
+import Container from "../components/Container.astro";
+import AuthModal from '../components/auth/AuthModal.jsx';
+
+const redirectPath = Astro.url.searchParams.get("redirect") || "/";
+---
+
+<AppLayout 
+    title="Vote.org | Signin"
+	header={false}
+	nav={false}
+>
+	<Container class="h-screen flex flex-col sm:items-center justify-center">
+		<img src="/logo.png" class="mb-2 self-center h-4" />
+		<div class="shadow-3xl shadow-zinc-800/50 border border-zinc-800 rounded-2xl">
+			<div class="shadow-lg shadow-black rounded-2xl">
+				<AuthModal
+					redirectPath={redirectPath}
+					joinButtonText="Sign In"
+					googleButtonText="Sign In with Google"
+					description={undefined}
+					subDescription={undefined}
+					confirmation={undefined}
+					client:load
+				/>
+			</div>
+		</div>
+	</Container>
+</AppLayout>
