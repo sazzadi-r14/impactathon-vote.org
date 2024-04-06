@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { doc, getDoc, updateDoc, deleteField } from 'firebase/firestore';
 import { db } from '../scripts/firebaseInit';
+import { UserInfo } from '@/stores/user.store';
+import { useStore } from '@nanostores/react'
 
-const UserDataDisplay = ({ userId }) => {
+const UserDataDisplay = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,14 +12,18 @@ const UserDataDisplay = ({ userId }) => {
   const [editedData, setEditedData] = useState({});
   const [deleteMode, setDeleteMode] = useState(false);
   const [deleteFields, setDeleteFields] = useState({});
+  const $userInfo = useStore(UserInfo)
 
   useEffect(() => {
+
+    console.log($userInfo.email)
+
     const fetchUserData = async () => {
       setLoading(true);
       setError(null);
 
       try {
-        const docRef = doc(db, "users", userId);
+        const docRef = doc(db, "users", $userInfo.email);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
@@ -34,7 +40,7 @@ const UserDataDisplay = ({ userId }) => {
     };
 
     fetchUserData();
-  }, [userId]);
+  }, []);
 
   const handleEdit = () => {
     setEditMode(true);
@@ -63,7 +69,7 @@ const UserDataDisplay = ({ userId }) => {
     setError(null);
   
     try {
-      const docRef = doc(db, "users", userId);
+      const docRef = doc(db, "users", $userInfo.email);
       const updatedData = { ...userData };
   
       for (const field in deleteFields) {
@@ -89,7 +95,7 @@ const UserDataDisplay = ({ userId }) => {
       setError(null);
   
       try {
-        const docRef = doc(db, "users", userId);
+        const docRef = doc(db, "users", $userInfo.email);
         await updateDoc(docRef, {});
         setUserData({});
         setDeleteFields({});
@@ -108,7 +114,7 @@ const UserDataDisplay = ({ userId }) => {
     setError(null);
 
     try {
-      const docRef = doc(db, "users", userId);
+      const docRef = doc(db, "users", $userInfo.email);
       await updateDoc(docRef, editedData);
       setUserData(editedData);
       setEditMode(false);
