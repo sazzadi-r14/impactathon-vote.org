@@ -1,32 +1,33 @@
 ---
 // Import the UserDataDisplay component for client-side rendering
 import UserDataDisplay from '../components/UserDataDisplay.jsx';
-import Layout from '../layouts/Layout.astro';
+import Layout from '../layouts/App.astro';
 
 // Define a placeholder for the user's email
 const userEmail = "sayed@gmail.com"; // This should be dynamically set based on your app's flow
 ---
+
 <Layout title="Edit Your Voter Information">
-	<main class="flex flex-col items-center justify-center min-h-screen p-6 bg-gray-100 text-gray-800">
-	  <div class="w-full max-w-2xl bg-white rounded-lg shadow-md p-6 space-y-6">
-		<h1 class="text-xl font-bold text-center">Voter Information Portal</h1>
-		
-		<!-- We will not use the form for email verification for this example.
-			 Assuming the userEmail is already verified and available for use. -->
-  
-		<!-- PII Fields -->
-		<div id="piiFields">
-		  <!-- This is where we will display the user data -->
-		  <UserDataDisplay userId={userEmail} client:load />
-		</div>
-	  </div>
-	</main>
-  </Layout>
-  
-  <script>
-	// Since we're using Astro, the client-side script will go inside the UserDataDisplay component.
-  </script>
-  
-  <style>
-	/* Additional styles if needed */
-  </style>
+  <main class="flex flex-col items-center justify-center min-h-screen p-6 bg-gray-100 text-gray-800">
+    <div class="w-full max-w-2xl bg-white rounded-lg shadow-md p-6 space-y-6">
+      <h1 class="text-xl font-bold text-center">Voter Information Portal</h1>
+      
+      <!-- We will not use the form for email verification for this example.
+           Assuming the userEmail is already verified and available for use. -->
+
+      <!-- PII Fields -->
+      <div id="piiFields">
+        <!-- This is where we will display the user data -->
+        <UserDataDisplay userId={userEmail} client:load />
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  // Since we're using Astro, the client-side script will go inside the UserDataDisplay component.
+</script>
+
+<style>
+  /* Additional styles if needed */
+</style>
