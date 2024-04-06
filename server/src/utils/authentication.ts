@@ -3,20 +3,6 @@ import User from "../models/user.model.js";
 import { ApiError } from "../errors/class.error.js";
 import { envs } from "./config.js";
 
-const authUserCookie = async (req, res, next) => {
-  try {
-    const sessionCookie = req.cookies.__session;
-    if (!sessionCookie) return res.status(401).json({ message: "No cookie found" });
-
-    const { uid } = await fireAuth.verifySessionCookie(sessionCookie);
-    if (!uid) return res.status(401).json({ message: "Unauthorized" });
-
-    next();
-  } catch (err) {
-    next(err);
-  }
-};
-
 const authUser = async (req, res, next) => {
   try {
     // Get token from request headers
@@ -60,6 +46,8 @@ const createSessionCookie = async (req, res, next) => {
       domain: envs.NODE_ENV == "dev" ? "localhost" : "",
     });
 
+    console.log("Check")
+
     res.status(200).json({
       message: "Authorized",
     });
@@ -68,4 +56,4 @@ const createSessionCookie = async (req, res, next) => {
   }
 };
 
-export { authUserCookie, authUser, createSessionCookie };
+export { authUser, createSessionCookie };

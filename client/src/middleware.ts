@@ -4,13 +4,7 @@ import { auth } from "./services/authentication";
 import { isSignInWithEmailLink, signInWithEmailLink } from "firebase/auth";
 
 const protectedRoutes: string[] = [
-	"/entries",
-	"/deposit",
-	"/play",
-	"/withdraw",
 	"/profile",
-	"/account",
-	"/account/referral",
 ];
 
 const verify_user = async (cookie: string) => {
