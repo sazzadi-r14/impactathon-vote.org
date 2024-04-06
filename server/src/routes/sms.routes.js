@@ -1,6 +1,6 @@
 // src/routes/sms.routes.js
 import express from 'express';
-import { sendSMS } from '../services/vonageService.js'; // Ensure the path is correct
+import { sendSMS, determineResponseMessage } from '../services/vonageService.js'; // Ensure the path is correct
 import { envs } from "../utils/config.js";
 
 const VONAGENUMBER = envs.VONAGE_NUMBER;
@@ -16,7 +16,7 @@ router.get('/incoming-sms', async (req, res) => {
 
   // Process the incoming message
   // console.log(`Sender: ${sender}, To: ${VONAGENUMBER}, Text: ${text}`);
-  const responseMessage = `You sent: ${text}`;
+  const responseMessage = determineResponseMessage(text);
 
   try {
       // Send the response back to the sender
