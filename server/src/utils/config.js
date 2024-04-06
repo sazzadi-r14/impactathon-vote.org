@@ -15,6 +15,9 @@ var envs = {
   FIREBASE_TOKEN_URI: process.env.FIREBASE_TOKEN_URI,
   FIREBASE_AUTH_CERT_URL: process.env.FIREBASE_AUTH_CERT_URL,
   FIREBASE_CLIENT_CERT_URL: process.env.FIREBASE_CLIENT_CERT_URL,
+  VONAGE_API_KEY: process.env.VONAGE_API_KEY,
+  VONAGE_API_SECRET: process.env.VONAGE_API_SECRET,
+  VONAGE_NUMBER: process.env.VONAGE_NUMBER,
 };
 
 // Set them based on dev or prod.

@@ -8,6 +8,8 @@
     "test": "NODE_ENV=test cross-env NODE_OPTIONS=--experimental-vm-modules jest --detectOpenHandles==false --forceExit"
   },
   "dependencies": {
+    "@vonage/client-sdk": "^1.5.1",
+    "@vonage/server-sdk": "^3.14.0",
     "axios": "^1.6.0",
     "body-parser": "^1.20.2",
     "cookie-parser": "^1.4.6",

@@ -8,6 +8,8 @@ import nodemailer from 'nodemailer';
 import { envs } from "./utils/config.js";
 import { ApiErrorHandler } from "./errors/handler.error.js";
 import AuthRoutes from "./routes/auth.routes.js";
+import smsRoutes from './src/routes/sms.routes.js';
+
 
 // Server setup
 const app = express();
@@ -20,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(cookieParser());
 
+// Use the imported routes
 app.use("/auth", AuthRoutes);
 
 // Email route
