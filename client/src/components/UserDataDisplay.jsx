@@ -37,10 +37,9 @@ const UserDataDisplay = ({ userId }) => {
   return (
     <div>
       <h2>User Data</h2>
-      <p>First Name: {userData['first-name']}</p>
-      <p>Last Name: {userData['last-name']}</p>
-      <p>Email Address: {userData['email address']}</p>
-      {/* Add more fields as needed */}
+      {Object.entries(userData || {}).map(([key, value]) => (
+        <p key={key}>{`${key}: ${value}`}</p>
+      ))}
     </div>
   );
 };
