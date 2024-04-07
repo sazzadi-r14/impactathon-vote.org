@@ -5,13 +5,12 @@ import UserDataDisplay from "@/components/UserDataDisplay";
 ---
 
 <Layout>
-	<Container class="flex flex-col items-center justify-center min-h-screen p-6 bg-gray-100 text-gray-800">
-		<div class="w-full max-w-2xl bg-white rounded-lg shadow-md p-6 space-y-6">
+	<Container class="flex flex-col items-center justify-center min-h-screen p-6 bg-gray-100 rounded-b-xl text-gray-800">
+		<div class="w-full max-w-2xl bg-white rounded-xl shadow-md p-6 space-y-6">
 			<h1 class="text-xl font-bold text-center">Voter Information Portal</h1>
 
 			<!-- PII Fields -->
-			<div id="piiFields">
-				<!-- This is where we will display the user data -->
+			<div>
 				<UserDataDisplay client:load />
 			</div>
 		</div>
