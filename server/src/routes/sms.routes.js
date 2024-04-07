@@ -1,7 +1,7 @@
 // src/routes/sms.routes.js
 import express from 'express';
 import { sendSMS } from '../services/vonageService.js'; // Ensure the path is correct
-impoort { determineResponseMessage } from "../services/gptService.js";
+import { determineResponseMessage } from "../services/gptService.js";
 import { envs } from "../utils/config.js";
 
 const VONAGENUMBER = envs.VONAGE_NUMBER;
