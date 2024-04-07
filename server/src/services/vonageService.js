@@ -46,11 +46,3 @@ export function determineResponseMessage(incomingText) {
   // Default message encourages specifying the request or exploring common topics
   return `Welcome to Vote.org! If you need assistance, try specifying your request. For example, ${suggestionList}. For more assistance, visit our website at https://www.vote.org/.`;
 }
-
-
-// Example usage in your application (assuming you have a way to capture incoming messages):
-/*
-const incomingText = "I want to update my information"; // Example text, replace with actual incoming message
-const responseMessage = determineResponseMessage(incomingText);
-// Use sendSMS function to send the responseMessage back to the user
-*/
