@@ -8,7 +8,7 @@ import app from '../app.js'
 
 // create server
 const server = http.createServer(app)
-server.listen(port)
+// server.listen(port)
 server.on('error', onError)
 server.on('listening', onListening)
 
