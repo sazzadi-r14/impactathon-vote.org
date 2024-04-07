@@ -5,6 +5,7 @@ import { UserInfo } from '@/stores/user.store';
 import { useStore } from '@nanostores/react'
 
 const UserDataDisplay = () => {
+  // State to store user data, loading status, errors, edit mode status, edited data, delete mode status, and fields marked for deletion.
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -14,6 +15,7 @@ const UserDataDisplay = () => {
   const [deleteFields, setDeleteFields] = useState({});
   const $userInfo = useStore(UserInfo)
 
+  // Fetches user data on component mount or when user information changes.
   useEffect(() => {
 
     console.log($userInfo.email)
@@ -42,10 +44,12 @@ const UserDataDisplay = () => {
     fetchUserData();
   }, []);
 
+  // Handles enabling edit mode.
   const handleEdit = () => {
     setEditMode(true);
   };
 
+   // Handles changes to input fields.
   const handleInputChange = (e) => {
     setEditedData({
       ...editedData,
@@ -53,17 +57,20 @@ const UserDataDisplay = () => {
     });
   };
 
+  // Toggles delete mode on and off.
   const handleDeleteMode = () => {
     setDeleteMode(!deleteMode);
     setDeleteFields({});
   };
-
+ 
+  // Marks or unmarks a field for deletion.
   const handleDeleteField = (fieldName) => {
     const updatedFields = { ...deleteFields };
     updatedFields[fieldName] = !updatedFields[fieldName];
     setDeleteFields(updatedFields);
   };
 
+  // Deletes selected fields.
   const handleDeleteSelected = async () => {
     setLoading(true);
     setError(null);
@@ -138,7 +145,7 @@ const UserDataDisplay = () => {
   }
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-md">
       <h2 className="text-xl font-bold text-gray-800 mb-6">Your Information</h2>
       {editMode ? (
         <form className="space-y-4">
@@ -179,7 +186,7 @@ const UserDataDisplay = () => {
               )}
             </div>
           ))}
-          <div className="flex justify-between">
+          <div className="flex justify-between space-x-2">
             <button
               onClick={handleDeleteMode}
               className="w-1/2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 rounded-lg transition-colors"
@@ -194,7 +201,7 @@ const UserDataDisplay = () => {
             </button>
           </div>
           {deleteMode && (
-            <div className="mt-4">
+            <div className="mt-4 space-y-2">
               <button
                 onClick={handleDeleteSelected}
                 className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 rounded-lg transition-colors mr-2"
