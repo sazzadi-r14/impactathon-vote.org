@@ -17,7 +17,8 @@ var envs = {
   VONAGE_API_KEY: process.env.VONAGE_API_KEY,
   VONAGE_API_SECRET: process.env.VONAGE_API_SECRET,
   VONAGE_NUMBER: process.env.VONAGE_NUMBER,
-  ADMIN_EMAIL: process.env.ADMIN_EMAIL
+  ADMIN_EMAIL: process.env.ADMIN_EMAIL,
+  OPENAI_API_KEY: process.env.OPENAI_API_KEY,
 };
 
 // Set them based on dev or prod.
