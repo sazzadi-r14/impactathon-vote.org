@@ -3,8 +3,8 @@ import http from 'http'
 import app from '../app.js'
 
 // obtain port
-// var port = normalizePort(process.env.PORT || 8080)
-// app.set('port', port)
+var port = normalizePort(process.env.PORT || 8080)
+app.set('port', port)
 
 // create server
 const server = http.createServer(app)
