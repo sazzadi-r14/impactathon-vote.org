@@ -10,6 +10,8 @@ const openai = new OpenAI({
 export async function determineResponseMessage(incomingText) {
   // The prompt does not need to be repeated for every call if using ChatGPT API
   // as the conversation history provides the context.
+  console.log("From determineResponseMessage")
+  console.log('Incoming text:', incomingText);
   const messages = [{
     role: "system",
     content: `The following are responses to common voting-related inquiries:
@@ -26,12 +28,15 @@ export async function determineResponseMessage(incomingText) {
     content: incomingText
   }];
 
+  console.log('Querying OpenAI ChatGPT with messages:', messages);
   try {
     const response = await openai.ChatCompletion.create({
       model: "gpt-3.5-turbo",
       messages: messages,
       temperature: 0.5,
     });
+    console.log('OpenAI response:', response);
+
 
     if (response && response.data && response.data.choices && response.data.choices.length > 0) {
       let message = response.data.choices[0].message.content.trim();
