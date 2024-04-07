@@ -20,6 +20,8 @@ export async function determineResponseMessage(incomingText) {
     If someone asks "election dates" or "when is the election", the bot replies: "To find out about upcoming election dates and deadlines, visit https://www.vote.org/election-dates-deadlines/."
     If someone asks for "help", the bot replies: "For assistance, please specify what you need help with, such as 'register to vote', 'update personal information', or 'find polling location'. Visit https://www.vote.org/ for more information."
     If someone asks about "absentee" or "mail-in ballot", the bot replies: "For information on absentee or mail-in voting, including how to request a ballot, visit https://www.vote.org/absentee-ballot/."
+    
+    Note: If the inquiry is not recognized, the bot will provide a general response. People might query you in different langaugaes, answer all of them with the same response. If a question is irrrelavnat, or not related to voting, answer with the general response.
     `
   }, {
     role: "user",
@@ -29,7 +31,7 @@ export async function determineResponseMessage(incomingText) {
   try {
     const response = await await openai.chat.completions.create({
       messages: messages,
-      model: "gpt-3.5-turbo",
+      model: "gpt-4-turbo-preview",
       temperature: 0.5,
       max_tokens: 1500,
     });
