@@ -28,6 +28,7 @@ export async function determineResponseMessage(incomingText) {
       temperature: 0.5,
     });
 
+    console.log('GPT-3.5 response:', gptResponse.data.choices[0].text);
     let message = gptResponse.data.choices[0].text.trim();
 
     // This is a simple heuristic to ensure the response is one of the predefined options.
