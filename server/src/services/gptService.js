@@ -10,8 +10,6 @@ const openai = new OpenAI({
 export async function determineResponseMessage(incomingText) {
   // The prompt does not need to be repeated for every call if using ChatGPT API
   // as the conversation history provides the context.
-  console.log("From determineResponseMessage")
-  console.log('Incoming text:', incomingText);
   const messages = [{
     role: "system",
     content: `The following are responses to common voting-related inquiries:
@@ -28,7 +26,6 @@ export async function determineResponseMessage(incomingText) {
     content: incomingText
   }];
 
-  console.log('Querying OpenAI ChatGPT with messages:', messages);
   try {
     const response = await await openai.chat.completions.create({
       messages: messages,
@@ -36,12 +33,10 @@ export async function determineResponseMessage(incomingText) {
       temperature: 0.5,
       max_tokens: 1500,
     });
-    console.log('OpenAI response:', response);
-    console.log('Choices:', response.choices[0].message.content);
 
 
-    if (response && response.data && response.data.choices && response.data.choices.length > 0) {
-      let message = response.data.choices[0].message.content.trim();
+    if (response && response.choices) {
+      let message = response.choices[0].message.content.trim();
       console.log('ChatGPT response:', message);
       // No need for a heuristic check here as the response is expected to be contextually relevant
       return message;
