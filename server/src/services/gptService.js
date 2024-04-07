@@ -1,12 +1,15 @@
 // src/services/gptService.js
-import { Configuration, OpenAIApi } from "openai";
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
 import { envs } from "../utils/config.js";
 
-
-const configuration = new Configuration({
+const openai = new OpenAI.ApiKey({
   apiKey: envs.OPENAI_API_KEY,
 });
-const openai = new OpenAIApi(configuration);
+
+
 
 export async function determineResponseMessage(incomingText) {
   // Prepare GPT-3.5 to understand the context and questions
