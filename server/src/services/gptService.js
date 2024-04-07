@@ -3,11 +3,12 @@ import OpenAI from "openai";
 
 const openai = new OpenAI();
 
+
 import { envs } from "../utils/config.js";
 
-const openai = new OpenAI.ApiKey({
-  apiKey: envs.OPENAI_API_KEY,
-});
+// const openai = new OpenAI.ApiKey({
+//   apiKey: envs.OPENAI_API_KEY,
+// });
 
 
 
