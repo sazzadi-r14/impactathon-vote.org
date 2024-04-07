@@ -30,9 +30,9 @@ export async function determineResponseMessage(incomingText) {
 
   console.log('Querying OpenAI ChatGPT with messages:', messages);
   try {
-    const response = await openai.ChatCompletion.create({
-      model: "gpt-3.5-turbo",
+    const response = await await openai.chat.completions.create({
       messages: messages,
+      model: "gpt-3.5-turbo",
       temperature: 0.5,
     });
     console.log('OpenAI response:', response);
