@@ -1,14 +1,9 @@
 // src/services/gptService.js
-import OpenAI from "openai";
-
-const openai = new OpenAI();
-
-
 import { envs } from "../utils/config.js";
-
-// const openai = new OpenAI.ApiKey({
-//   apiKey: envs.OPENAI_API_KEY,
-// });
+import OpenAI from 'openai';
+const openai = new OpenAI({
+        apiKey: envs.OPENAI_API_KEY,
+      });
 
 
 
