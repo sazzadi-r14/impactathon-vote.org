@@ -15,7 +15,7 @@ router.get('/incoming-sms', async (req, res) => {
   const sender = '+' + msisdn;
 
   // Process the incoming message
-  // console.log(`Sender: ${sender}, To: ${VONAGENUMBER}, Text: ${text}`);
+  console.log(`Sender: ${sender}, To: ${VONAGENUMBER}, Text: ${text}`);
   const responseMessage = determineResponseMessage(text);
 
   try {
