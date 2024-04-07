@@ -21,7 +21,7 @@ auth.setPersistence(indexedDBLocalPersistence);
  */
 const sendSigninLink = async (email: string, redirectPath: string) => {
 	const actionCodeSettings = {
-		url: `${env.FRONTEND_URL}${redirectPath}?email=${email}&referral=${localStorage.getItem("referral-code")}`,
+		url: `${env.FRONTEND_URL}${redirectPath}?email=${email}`,
 		handleCodeInApp: true,
 	};
 	window.localStorage.setItem("emailForSignIn", email);
@@ -34,20 +34,6 @@ const sendSigninLink = async (email: string, redirectPath: string) => {
  */
 const signinFromLink = async (redirectPath: string) => {
 	if (isSignInWithEmailLink(auth, window.location.href)) {
-		const params = new URLSearchParams(window.location.search);
-		const newUser = params.get("newUser") == "true";
-		const userType = params.get("userType") as "Creator" | "Backer";
-
-		// Send event to analytics.
-		if (newUser && env.PROD) {
-			if (userType == "Creator") {
-				// plausible('Creator Signup')
-			} else {
-				// fbq('track', 'Lead')
-				// plausible('Backer Signup')
-			}
-		}
-
 		window.location.assign(redirectPath);
 	}
 };

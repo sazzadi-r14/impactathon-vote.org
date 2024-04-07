@@ -31,7 +31,6 @@ export const onRequest = defineMiddleware(async (context, next) => {
 		// If user signed in from email link.
 		if (isSignInWithEmailLink(auth, href)) {
 			const email = context.url.searchParams.get("email") || "";
-			const referralCode = context.url.searchParams.get("referral") || "";
 
 			try {
 				const result = await signInWithEmailLink(auth, email, href);
@@ -46,7 +45,6 @@ export const onRequest = defineMiddleware(async (context, next) => {
 					},
 					body: JSON.stringify({
 						email: result.user.email,
-						referral_code: referralCode,
 						requestId,
 					}),
 				});
@@ -63,9 +61,14 @@ export const onRequest = defineMiddleware(async (context, next) => {
 					secure: true,
 					maxAge: 60 * 60 * 24 * 5, // 1 week
 					path: "/",
-					domain: env.PROD ? "" : "localhost",
+					domain: env.PROD ? "impactathon-vote-org.vercel.app" : "localhost",
 				});
+
+				console.log(sessionCookie)
+
+
 			} catch (err) {
+				console.log(err)
 				return context.redirect(signinPath);
 			}
 		}
@@ -115,7 +118,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
 				secure: true,
 				maxAge: 60 * 60 * 24 * 5, // 1 week
 				path: "/",
-				domain: env.PROD ? "" : "localhost",
+				domain: env.PROD ? "impactathon-vote-org.vercel.app" : "localhost",
 			});
 		} catch (err) {}
 
