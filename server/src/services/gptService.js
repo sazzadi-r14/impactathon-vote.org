@@ -34,8 +34,10 @@ export async function determineResponseMessage(incomingText) {
       messages: messages,
       model: "gpt-3.5-turbo",
       temperature: 0.5,
+      max_tokens: 1500,
     });
     console.log('OpenAI response:', response);
+    console.log('Choices:', response.choices[0].message.content);
 
 
     if (response && response.data && response.data.choices && response.data.choices.length > 0) {
