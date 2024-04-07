@@ -22,10 +22,10 @@ export async function determineResponseMessage(incomingText) {
   Based on this, how should the bot reply to the following question: "${incomingText}"`;
 
   try {
-    const gptResponse = await openai.createCompletion({
-      model: "text-davinci-003",
+    const gptResponse = await openai.completions.create({
+      model: "gpt-3.5-turbo-instruct",
       prompt: prompt,
-      max_tokens: 150,
+      max_tokens: 500,
       temperature: 0.5,
     });
 
