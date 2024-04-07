@@ -1,138 +1,104 @@
 ---
 import Container from "../Container.astro";
-
-const currentYear = new Date().getFullYear();
-
-const { app = true } = Astro.props;
 ---
 
 <footer class="py-12 pb-40">
-  <Container>
-    <div
-      class="mt-12 flex flex-wrap justify-center items-center text-xl text-zinc-900 dark:text-white"
-    >
-      <span class="text-zinc-600 dark:text-zinc-300">Contact Us&nbsp&nbsp;</span
-      >
-      <a
-        class={`font-medium ${app ? "" : "text-white"}`}
-        href="mailto:hello@vote.org">hello@vote.org</a
-      >
-    </div>
+	<Container>
+		<div
+			class="mt-12 flex flex-wrap justify-center items-center text-xl text-zinc-900 dark:text-white"
+		>
+			<span class="text-zinc-600 dark:text-zinc-300">
+				Contact Us&nbsp&nbsp;
+			</span>
+			<a class="font-medium" href="mailto:info@vote.org">info@vote.org</a>
+		</div>
 
-    <ul
-      role="list"
-      class="flex flex-wrap items-center justify-center gap-4 py-2 text-zinc-600 dark:text-zinc-400 sm:gap-8"
-    >
-      <li role="listitem">
-        <a
-          href="/"
-          class="duration-300 hover:text-primary dark:hover:text-white"
-        >
-          Bets
-        </a>
-      </li>
-      <li role="listitem">
-        <a
-          href="/about"
-          class="duration-300 hover:text-primary dark:hover:text-white"
-        >
-          About
-        </a>
-      </li>
-      <li role="listitem">
-        <a
-          href="/faq"
-          class="duration-300 hover:text-primary dark:hover:text-white"
-        >
-          FAQ
-        </a>
-      </li>
-      <li role="listitem">
-        <a
-          href="/privacy"
-          class="duration-300 hover:text-primary dark:hover:text-white"
-        >
-          Privacy
-        </a>
-      </li>
-      <li role="listitem">
-        <a
-          href="/terms"
-          class="duration-300 hover:text-primary dark:hover:text-white"
-        >
-          Terms of Service
-        </a>
-      </li>
-    </ul>
-    <div
-      class="m-auto mt-2 flex w-max items-center justify-between text-zinc-500"
-    >
-      <a
-        class="duration-300 p-3 hover:text-zinc-600 dark:hover:text-white"
-        href="https://twitter.com/votedotorg"
-        title="twitter"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="twitter"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          class="m-auto h-5 w-5"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
-          ></path>
-        </svg>
-      </a>
-      <a
-        class="duration-300 p-3 hover:text-zinc-600 dark:hover:text-white"
-        href="https://discord.gg/69nPhJHvDf"
-        title="discord"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="discord"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          class="m-auto h-5 w-5"
-          viewBox="0 0 127.14 96.36"
-        >
-          <path
-            xmlns="http://www.w3.org/2000/svg"
-            d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"
-          ></path>
-        </svg>
-      </a>
-      <a
-        class="duration-300 p-3 hover:text-zinc-600 dark:hover:text-white"
-        href="https://www.instagram.com/votedotorg/"
-        title="instagram"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="discord"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          ><path
-            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
-          >
-          </path>
-        </svg>
-      </a>
-    </div>
-    <div class="mt-5 space-y-4">
-      <p class="text-center text-sm tracking-wide text-zinc-500">
-        Vote.org is not associated or endorsed by Vote Games.<br />
-        <br /><br />
-        Copyright &copy; Vote Org {currentYear} - Present | All rights reserved
-      </p>
-    </div>
-  </Container>
+		<ul
+			role="list"
+			class="flex flex-wrap items-center justify-center gap-4 py-2 text-zinc-600 dark:text-zinc-400 sm:gap-8"
+		>
+			<li role="listitem">
+				<a
+					href="/about"
+					class="duration-300 hover:text-primary dark:hover:text-white"
+				>
+					About
+				</a>
+			</li>
+			<li role="listitem">
+				<a
+					href="/faq"
+					class="duration-300 hover:text-primary dark:hover:text-white"
+				>
+					FAQ
+				</a>
+			</li>
+			<li role="listitem">
+				<a
+					href="/privacy"
+					class="duration-300 hover:text-primary dark:hover:text-white"
+				>
+					Privacy
+				</a>
+			</li>
+			<li role="listitem">
+				<a
+					href="/terms"
+					class="duration-300 hover:text-primary dark:hover:text-white"
+				>
+					Terms of Service
+				</a>
+			</li>
+		</ul>
+		<div
+			class="m-auto mt-2 flex w-max items-center justify-between text-zinc-500"
+		>
+			<a
+				class="duration-300 p-3 hover:text-zinc-600 dark:hover:text-white"
+				href="https://twitter.com/votedotorg"
+				title="twitter"
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="twitter"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="currentColor"
+					class="m-auto h-5 w-5"
+					viewBox="0 0 16 16"
+				>
+					<path
+						d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
+					></path>
+				</svg>
+			</a>
+			<a
+				class="duration-300 p-3 hover:text-zinc-600 dark:hover:text-white"
+				href="https://www.instagram.com/votedotorg/"
+				title="instagram"
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="discord"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+					fill="currentColor"
+					><path
+						d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+					>
+					</path>
+				</svg>
+			</a>
+		</div>
+		<div class="space-y-4">
+			<p class="text-center text-sm tracking-wide text-zinc-500">
+				<br /><br />
+				© 2024. Vote.org is a 501(c)(3) registered non-profit organization and does
+				not support or oppose any political candidate or party.
+			</p>
+		</div>
+	</Container>
 </footer>
