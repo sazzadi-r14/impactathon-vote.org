@@ -40,7 +40,7 @@ export function determineResponseMessage(incomingText) {
   }
 
   // Suggestion engine for unrecognized queries
-  const suggestions = ["register to vote", "update personal information", "find polling location", "election dates", "absentee or mail-in voting"];
+  const suggestions = ["register to vote", "update pii", "voting location", "election dates", "help"];
   const suggestionList = suggestions.map(suggestion => `'${suggestion}'`).join(", ");
   
   // Default message encourages specifying the request or exploring common topics
