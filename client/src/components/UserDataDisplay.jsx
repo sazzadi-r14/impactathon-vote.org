@@ -145,7 +145,7 @@ const UserDataDisplay = () => {
   }
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+    <div className="max-w-md mx-auto mt-10 p-6 bg-white shadow-md">
       <h2 className="text-xl font-bold text-gray-800 mb-6">Your Information</h2>
       {editMode ? (
         <form className="space-y-4">
@@ -186,7 +186,7 @@ const UserDataDisplay = () => {
               )}
             </div>
           ))}
-          <div className="flex justify-between">
+          <div className="flex justify-between space-x-2">
             <button
               onClick={handleDeleteMode}
               className="w-1/2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 rounded-lg transition-colors"
@@ -201,7 +201,7 @@ const UserDataDisplay = () => {
             </button>
           </div>
           {deleteMode && (
-            <div className="mt-4">
+            <div className="mt-4 space-y-2">
               <button
                 onClick={handleDeleteSelected}
                 className="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 rounded-lg transition-colors mr-2"
